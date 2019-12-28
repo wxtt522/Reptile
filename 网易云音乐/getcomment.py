@@ -11,8 +11,8 @@ import random
 import numpy as np
 from bs4 import BeautifulSoup
 
-
-url='http://music.163.com/api/v1/resource/comments/R_SO_4_1374051000?&offset={}'
+# url = 'http://music.163.com/api/v1/resource/comments/R_SO_4_1374051000?&offset={}'
+url = 'http://music.163.com/api/v1/resource/comments/R_SO_4_1392990601?&offset={}'
 user_agent = [
     "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50",
     "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50",
@@ -50,18 +50,17 @@ user_agent = [
     "NOKIA5700/ UCWEB7.0.2.37/28/999",
     "Openwave/ UCWEB7.0.2.37/28/999",
     "Mozilla/4.0 (compatible; MSIE 6.0; ) Opera/UCWEB7.0.2.37/28/999",
-     # iPhone 6：
-    "Mozilla/6.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/8.0 Mobile/10A5376e Safari/8536.25", 
+    # iPhone 6：
+    "Mozilla/6.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/8.0 Mobile/10A5376e Safari/8536.25",
 ]
-    
 
-headers = { 'User-Agent': random.choice(user_agent),  # 随机选取头部代理
-            'Connection': "keep-alive",
-            'Host': "music.163.com",
-            'referer': 'https://music.163.com/download?type=sem&market=baidupz201901',
-            'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
-            'cookie': '_ntes_nnid=933c525f8c0b999244d85429df9c54ed,1560650274521; _ntes_nuid=933c525f8c0b999244d85429df9c54ed; mail_psc_fingerprint=4c89f9e89b2b7fe2b11bf2c401bfd48d; _iuqxldmzr_=32; WM_TID=5QxWr%2Fu2t%2BBEAVBVQVYonyx1FwLGnWyT; P_INFO=lyc4481341234@163.com|1561010733|0|mail163|00&99|null&null&null#anh&340100#10#0#0|&0|urs&unireg|lyc4481341234@163.com; Province=0; City=0; hb_MA-891C-BF35BECB05C1_source=yuedu.163.com; hb_MA-BFF5-63705950A31C_source=www.baidu.com; JSESSIONID-WYYY=ddvhSSfrSNeDtI%2B7QSmNzjjGoZ3t1vkj0pBj5QPKQT%5Cv8PbPE0%2Fp9vWw%2F3Q3ytsN2goCOn1rWawKiTocORnsCGJOXfzNrF39ZJkBg3wXwc9m%5CGx%2FlrMyOMBmO7MiTz3tOgqV9HM%2F6cQmcv5hIdaarqlaW8k4KA3diwvca5Yq0jmxJiE%5C%3A1562570060948; WM_NI=UNoMQfJk5XZCy8J7MKJcLg2PwQ2pYg%2F%2FbUbgOIRXRtoI3YTpl9qcjH1zV4VSy21exMGdiapG%2FgZNSyOOPpXrIsAgcp95TvTyW%2Fm4WervQqqvffLXlTRf97Y0VgqwfSpfNG4%3D; WM_NIKE=9ca17ae2e6ffcda170e2e6eebbd35b9aa7bc91cb74f4bc8ea7d55e878f8eaeb739b7879eaae63d869f86babc2af0fea7c3b92a9792a1aed46e8ab5fbb9d949bbe886d8d0418abd8488b15cb58ffe91dc6dedf1aeb6e16d8d979eb9d180ad97fdbad77cb0e7bf84e944f3a69ad5d559bbeeff86fb4785bca782f34dedb996afd2738d91a091db7a8bad8f88e27cfbeb9c97d77395f1a3d5d66fb2aa9f92f47ea6ba84b9ef6092baf7d8dc3c96b9bf98e559b4ba82a8b737e2a3'
-          }
+headers = {'User-Agent': random.choice(user_agent),  # 随机选取头部代理
+           'Connection': "keep-alive",
+           'Host': "music.163.com",
+           'referer': 'https://music.163.com/download?type=sem&market=baidupz201901',
+           'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+           'cookie': '_ntes_nnid=933c525f8c0b999244d85429df9c54ed,1560650274521; _ntes_nuid=933c525f8c0b999244d85429df9c54ed; mail_psc_fingerprint=4c89f9e89b2b7fe2b11bf2c401bfd48d; _iuqxldmzr_=32; WM_TID=5QxWr%2Fu2t%2BBEAVBVQVYonyx1FwLGnWyT; P_INFO=lyc4481341234@163.com|1561010733|0|mail163|00&99|null&null&null#anh&340100#10#0#0|&0|urs&unireg|lyc4481341234@163.com; Province=0; City=0; hb_MA-891C-BF35BECB05C1_source=yuedu.163.com; hb_MA-BFF5-63705950A31C_source=www.baidu.com; JSESSIONID-WYYY=ddvhSSfrSNeDtI%2B7QSmNzjjGoZ3t1vkj0pBj5QPKQT%5Cv8PbPE0%2Fp9vWw%2F3Q3ytsN2goCOn1rWawKiTocORnsCGJOXfzNrF39ZJkBg3wXwc9m%5CGx%2FlrMyOMBmO7MiTz3tOgqV9HM%2F6cQmcv5hIdaarqlaW8k4KA3diwvca5Yq0jmxJiE%5C%3A1562570060948; WM_NI=UNoMQfJk5XZCy8J7MKJcLg2PwQ2pYg%2F%2FbUbgOIRXRtoI3YTpl9qcjH1zV4VSy21exMGdiapG%2FgZNSyOOPpXrIsAgcp95TvTyW%2Fm4WervQqqvffLXlTRf97Y0VgqwfSpfNG4%3D; WM_NIKE=9ca17ae2e6ffcda170e2e6eebbd35b9aa7bc91cb74f4bc8ea7d55e878f8eaeb739b7879eaae63d869f86babc2af0fea7c3b92a9792a1aed46e8ab5fbb9d949bbe886d8d0418abd8488b15cb58ffe91dc6dedf1aeb6e16d8d979eb9d180ad97fdbad77cb0e7bf84e944f3a69ad5d559bbeeff86fb4785bca782f34dedb996afd2738d91a091db7a8bad8f88e27cfbeb9c97d77395f1a3d5d66fb2aa9f92f47ea6ba84b9ef6092baf7d8dc3c96b9bf98e559b4ba82a8b737e2a3'
+           }
 
 
 # 设置代理服务器
@@ -73,18 +72,19 @@ def get_ip_list(url, headers):
     for i in range(1, len(ips)):
         ip_info = ips[i]
         tds = ip_info.find_all('td')
-        #ip_list1.append('http://'+tds[1].text + ':' + tds[2].text)  #xici
-        ip_list1.append('http://'+tds[0].text + ':' + tds[1].text)   #kuaidaili
+        # ip_list1.append('http://'+tds[1].text + ':' + tds[2].text)  #xici
+        ip_list1.append('http://' + tds[0].text + ':' + tds[1].text)  # kuaidaili
     return ip_list1
+
 
 # 判断代理服务器是否有效
 def checkip(ip):
-
-    url='http://www.baidu.com/'
-    headers={'User-agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36 QIHU 360SE'}
+    url = 'http://www.baidu.com/'
+    headers = {
+        'User-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36 QIHU 360SE'}
     try:
-        r=requests.get(url,headers=headers,proxies={'http':ip},timeout=5)
-        if r.status_code==200:   
+        r = requests.get(url, headers=headers, proxies={'http': ip}, timeout=5)
+        if r.status_code == 200:
             return True
         else:
             return False
@@ -92,28 +92,24 @@ def checkip(ip):
         return False
 
 
-    
-def select_good_ip(ip_list,good_ip_list):
+def select_good_ip(ip_list, good_ip_list):
     for ip in ip_list:
         if checkip(ip):
             good_ip_list.append({'http': ip})
 
 
-
-
-
-def getjson(url,proxy):
+def getjson(url, proxy):
     try:
-        #r=requests.get(url,headers=headers,timeout=30,proxies=random.choice(good_ip_list))
-        r=requests.get(url,headers=headers,proxies={'https': 'https://{}:{}'.format(proxy['ip'], proxy['port'])})
-        r.encoding='utf-8'
+        # r=requests.get(url,headers=headers,timeout=30,proxies=random.choice(good_ip_list))
+        r = requests.get(url, headers=headers, proxies={'https': 'https://{}:{}'.format(proxy['ip'], proxy['port'])})
+        r.encoding = 'utf-8'
         return r.json()
     except:
         return None
-    
-    
+
+
 def main():
-    offset=0
+    offset = 0
     '''
     good_ip_list = []
     ip_list=[]
@@ -125,37 +121,38 @@ def main():
     print(good_ip_list)
     '''
     # 请求r1，获取随机代理IP
-    r1=requests.get('http://47.100.21.174:8899/api/v1/proxies?limit=60').json()
+    r1 = requests.get('http://47.100.21.174:8899/api/v1/proxies?limit=60').json()
     with open('music_comments.csv', 'a', encoding='utf-8_sig') as f:
-        for i in range(10000):
-            real_url=url.format(offset)
-            proxy=random.choice(r1['proxies'])
-            json=getjson(real_url,proxy)
+        for i in range(100):
+            real_url = url.format(offset)
+            proxy = random.choice(r1['proxies'])
+            json = getjson(real_url, proxy)
             if json:
-                comments=json['comments']
+                comments = json['comments']
                 for comment in comments:
-            # 用户名
+                    # 用户名
                     user_name = comment['user']['nickname'].replace(',', '，')
-            # 用户ID
+                    # 用户ID
                     user_id = str(comment['user']['userId'])
-            # 评论内容
+                    # 评论内容
                     com = comment['content'].strip().replace('\n', '').replace(',', '，')
-            # 评论ID
+                    # 评论ID
                     comment_id = str(comment['commentId'])
-            # 评论点赞数
+                    # 评论点赞数
                     praise = str(comment['likedCount'])
-            # 评论时间
+                    # 评论时间
                     date = time.localtime(int(str(comment['time'])[:10]))
                     structed_date = time.strftime("%Y-%m-%d %H:%M:%S", date)
-                    print(user_name, user_id,  com, comment_id, praise, structed_date)
-                    f.write(user_name + ',' + user_id + ','+ com + ',' + comment_id + ',' + praise + ',' + structed_date + '\n')
-                offset+=20
+                    print(user_name, user_id, com, comment_id, praise, structed_date)
+                    f.write(
+                        user_name + ',' + user_id + ',' + com + ',' + comment_id + ',' + praise + ',' + structed_date + '\n')
+                offset += 1
 
-            # 加上随机的时间延迟
-                
-                rdtime=20*np.random.rand()
+                # 加上随机的时间延迟
+
+                rdtime = 1 * np.random.rand()
                 time.sleep(rdtime)
-                
-    
+
+
 if __name__ == '__main__':
     main()

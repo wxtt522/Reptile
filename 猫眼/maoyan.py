@@ -27,7 +27,7 @@ def get_movie_code(movie_name):
    
     print(proxy_ip)
     ua = {'user-agent': 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.94 Safari/537.36'}
-    responses=requests.get(url=url,headers=ua,proxies=proxies)
+    responses=requests.get(url=url,headers=ua)
     print("请求代码:%d"%responses.status_code)
    
     html=BeautifulSoup(responses.text,"html.parser")
